@@ -1,0 +1,79 @@
+<div class="as-search-wrapper" role="main">
+  <div class="as-navtuck-wrapper">
+    <div class="as-l-fullwidth  as-navtuck" data-events="event52">
+      <div>
+        <div class="pd-billboard pd-category-header">
+          <div class="pd-l-plate-scale">
+            <div class="pd-billboard-background">
+              <img src="./assets/music-audio-alp-201709" alt="" width="1440" height="180"
+                data-scale-params-2="wid=2880&amp;hei=640&amp;fmt=jpeg&amp;qlt=95&amp;op_usm=0.5,0.5&amp;.v=1503948581306"
+                class="pd-billboard-hero ir">
+            </div>
+            <div class="pd-billboard-info">
+              <h1 class="pd-billboard-header pd-util-compact-small-18">Tienda e-commerce</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    body,
+    .as-search-wrapper {
+      text-align: center !important;
+    }
+
+    .box {
+      width: 50%;
+      margin: 40px auto;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .aprobado {
+      border: 1px solid green;
+      background-color: lightyellow;
+    }
+
+    .pendiente {
+      border: 1px solid darkorange;
+      background-color: blanchedalmond;
+    }
+
+    .error {
+      border: 1px solid brown;
+      background-color: rgb(248, 228, 228);
+    }
+  </style>
+
+  {{#ifthen payment_status 'approved' }}
+  <div class="box aprobado">
+    <div>Aprobado gracias por su compra!</div><br>
+    <div>Method: {{ @root.payment_method_id }} - Amount: {{ @root.total_paid_amount }} - Order: {{ @root.order_id }} - MP Id: {{ @root.payment_id }}</div>
+  </div>
+  <button type="button" onclick="location.href='/'" class="mercadopago-button">Seguir comprando</button>
+  {{/ifthen}}
+
+  {{#ifthen payment_status 'pending' }}
+  <div class="box pendiente">El pago esta pendiente, dirigite a una sucursal de pago para completarlo</div>
+  <button type="button" onclick="location.href='/'" class="mercadopago-button">Seguir comprando</button>
+  {{/ifthen}}
+
+  {{#ifthen payment_status 'cancelled' }}
+  <div class="box error">
+    <div>El pago fue cancelado</div>
+    <div>{{ @root.payment_status_detail }}</div>
+  </div>
+  <button type="button" onclick="window.history.back()" class="mercadopago-button">Intentar Nuevamente</button>
+  {{/ifthen}}
+
+  {{#ifthen payment_status 'rejected' }}
+  <div class="box error">
+    <div>Error al completar el pago</div>
+    <div>{{ @root.payment_status_detail }}</div>
+  </div>
+  <button type="button" onclick="window.history.back()" class="mercadopago-button">Intentar Nuevamente</button>
+  {{/ifthen}}
+
+</div>

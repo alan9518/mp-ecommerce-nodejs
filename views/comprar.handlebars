@@ -1,0 +1,94 @@
+<div class="as-search-wrapper" role="main">
+  <div class="as-navtuck-wrapper">
+    <div class="as-l-fullwidth  as-navtuck" data-events="event52">
+      <div>
+        <div class="pd-billboard pd-category-header">
+          <div class="pd-l-plate-scale">
+            <div class="pd-billboard-background">
+              <img src="./assets/music-audio-alp-201709" alt="" width="1440" height="180"
+                data-scale-params-2="wid=2880&amp;hei=640&amp;fmt=jpeg&amp;qlt=95&amp;op_usm=0.5,0.5&amp;.v=1503948581306"
+                class="pd-billboard-hero ir">
+            </div>
+            <div class="pd-billboard-info">
+              <h1 class="pd-billboard-header pd-util-compact-small-18">Tienda e-commerce</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .grid {
+      margin: 0px 0 80px 0;
+      padding: 10px;
+      width: 50%;
+      display: grid;
+      grid-template-columns: 40% 60%;
+      font-size: 0.9rem;
+      border: 1px solid #eee;
+    }
+
+    .grid div {
+      white-space: nowrap;
+      padding: 4px;
+      margin: 4px 0;
+    }
+
+    .grid div:nth-child(odd) {
+      text-align: right;
+      padding-right: 20px;
+    }
+
+    .grid input[type=text] {
+      font-size: 0.9rem;
+      border: none;
+      border-bottom: 2px solid silver;
+      margin: 0 4px;
+    }
+
+    .panel {
+      text-align: center;
+      padding: 40px;
+    }
+  </style>
+
+  <div class="panel">
+    <img src="./assets/003.jpg" class="ir ir item-image as-producttile-image"
+      style="width:222px;height:222px;content:-webkit-image-set(url({{ img }}) 2x);">
+    <div class="as-producttile-title">
+      <h3 class="as-producttile-name">
+        <p class="as-producttile-tilelink">
+          <span data-ase-truncate="2"> {{ title }} </span>
+        </p>
+      </h3>
+    </div>
+    <h3>Precio: ${{ price }}</h3>
+    <h3>Cantidad: {{ unit }}</h3>
+  </div>
+
+  <form style="display:flex;justify-content:center;" action="/confirmar" method="post">
+    <input type="hidden" name="title" value="{{ title }}">
+    <input type="hidden" name="price" value="{{ price }}">
+    <input type="hidden" name="unit" value="{{ unit }}">
+    <input type="hidden" name="img_url" value="{{ img_url }}">
+    <div class="grid">
+      <div>Nombre y Apellido</div>
+      <div><input type="text" name="nombre" value="Lalo Landa"></div>
+      <div>Documento</div>
+      <div><input type="text" name="tipo" value="DNI"><input type="text" name="numero" value="223334444"></div>
+      <div>Email</div>
+      <div><input type="text" name="email" value="test_user_63274575@testuser.com"></div>
+      <div>Teléfono</div>
+      <div><input type="text" name="area" value="11"><input type="text" name="fono" value="22223333"></div>
+      <div>Domicilio</div>
+      <div><input type="text" name="calle" value="Falsa"><input type="text" name="calle_num" value="123"></div>
+      <div>Cód. Postal</div>
+      <div><input type="text" name="zip" value="1111"></div>
+      <div></div>
+      <div style="text-align:right">
+        <button type="submit" class="mercadopago-button">Continuar con el pago</button>
+      </div>
+    </div>
+  </form>
+</div>
